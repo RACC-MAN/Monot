@@ -1,0 +1,217 @@
+[0.000000] (-) TimerEvent: {}
+[0.000336] (monot_slam) JobQueued: {'identifier': 'monot_slam', 'dependencies': OrderedDict()}
+[0.000914] (monot_slam) JobStarted: {'identifier': 'monot_slam'}
+[0.006408] (monot_slam) JobProgress: {'identifier': 'monot_slam', 'progress': 'cmake'}
+[0.007242] (monot_slam) Command: {'cmd': ['/usr/bin/cmake', '/home/racc_man/Monot/Monot_ROS2/src/monot_slam', '-DCMAKE_INSTALL_PREFIX=/home/racc_man/Monot/Monot_ROS2/install/monot_slam'], 'cwd': '/home/racc_man/Monot/Monot_ROS2/build/monot_slam', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'racc_man'), ('ROS_PACKAGE_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/share'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/racc_man/ORB-SLAM3/ORB_SLAM3/lib:/home/racc_man/ORB-SLAM/ORB_SLAM3/lib:/home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo/lib:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/racc_man'), ('OLDPWD', '/home/racc_man/Monot'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install:/home/racc_man/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'racc_man'), ('NAME', 'TatsuoDeskTop'), ('WSL_INTEROP', '/run/WSL/435_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/x86_64-linux-gnu/pkgconfig:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/usbipd-win/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files/CMake/bin:/mnt/c/Users/tatsu/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/tatsu/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/tatsu/AppData/Local/GitHubDesktop/bin:/mnt/c/Program Files/CMake/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:f42044f6-a1c0-4760-ab92-20a08c616093'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/racc_man/Monot/Monot_ROS2/build/monot_slam'), ('TURTLEBOT3_MODEL', 'burger'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('VTE_VERSION', '6800'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk'), ('WSLENV', '')]), 'shell': False}
+[0.092141] (monot_slam) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099990] (-) TimerEvent: {}
+[0.200205] (-) TimerEvent: {}
+[0.224110] (monot_slam) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.286745] (monot_slam) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.300297] (-) TimerEvent: {}
+[0.340845] (monot_slam) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.344324] (monot_slam) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.344746] (monot_slam) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.345155] (monot_slam) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.347441] (monot_slam) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.400411] (-) TimerEvent: {}
+[0.404549] (monot_slam) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.408185] (monot_slam) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.408450] (monot_slam) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.408619] (monot_slam) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.415493] (monot_slam) StdoutLine: {'line': b'-- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)\n'}
+[0.500499] (-) TimerEvent: {}
+[0.503534] (monot_slam) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.600592] (-) TimerEvent: {}
+[0.668101] (monot_slam) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.672445] (monot_slam) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.679528] (monot_slam) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.689731] (monot_slam) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.700656] (-) TimerEvent: {}
+[0.702532] (monot_slam) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.740205] (monot_slam) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.743642] (monot_slam) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.800751] (-) TimerEvent: {}
+[0.900992] (-) TimerEvent: {}
+[1.001239] (-) TimerEvent: {}
+[1.058969] (monot_slam) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.101333] (-) TimerEvent: {}
+[1.201564] (-) TimerEvent: {}
+[1.301843] (-) TimerEvent: {}
+[1.355146] (monot_slam) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.401935] (-) TimerEvent: {}
+[1.502168] (-) TimerEvent: {}
+[1.602411] (-) TimerEvent: {}
+[1.702662] (-) TimerEvent: {}
+[1.802917] (-) TimerEvent: {}
+[1.884755] (monot_slam) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.893436] (monot_slam) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.902997] (-) TimerEvent: {}
+[1.954179] (monot_slam) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.954357] (monot_slam) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.003114] (-) TimerEvent: {}
+[2.004977] (monot_slam) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[2.005238] (monot_slam) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.103184] (-) TimerEvent: {}
+[2.194716] (monot_slam) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL \n'}
+[2.199691] (monot_slam) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[2.203254] (-) TimerEvent: {}
+[2.219201] (monot_slam) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.219991] (monot_slam) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.220149] (monot_slam) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/racc_man/Monot/Monot_ROS2/src/monot_slam/include\n'}
+[2.220194] (monot_slam) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.220806] (monot_slam) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[2.220853] (monot_slam) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[2.221494] (monot_slam) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.222396] (monot_slam) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.222522] (monot_slam) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.222952] (monot_slam) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.225821] (monot_slam) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.238880] (monot_slam) StdoutLine: {'line': b'-- Generating done\n'}
+[2.242152] (monot_slam) StdoutLine: {'line': b'-- Build files have been written to: /home/racc_man/Monot/Monot_ROS2/build/monot_slam\n'}
+[2.248352] (monot_slam) CommandEnded: {'returncode': 0}
+[2.248780] (monot_slam) JobProgress: {'identifier': 'monot_slam', 'progress': 'build'}
+[2.249179] (monot_slam) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/racc_man/Monot/Monot_ROS2/build/monot_slam', '--', '-j20', '-l20'], 'cwd': '/home/racc_man/Monot/Monot_ROS2/build/monot_slam', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'racc_man'), ('ROS_PACKAGE_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/share'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/racc_man/ORB-SLAM3/ORB_SLAM3/lib:/home/racc_man/ORB-SLAM/ORB_SLAM3/lib:/home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo/lib:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/racc_man'), ('OLDPWD', '/home/racc_man/Monot'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install:/home/racc_man/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'racc_man'), ('NAME', 'TatsuoDeskTop'), ('WSL_INTEROP', '/run/WSL/435_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/x86_64-linux-gnu/pkgconfig:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/usbipd-win/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files/CMake/bin:/mnt/c/Users/tatsu/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/tatsu/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/tatsu/AppData/Local/GitHubDesktop/bin:/mnt/c/Program Files/CMake/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:f42044f6-a1c0-4760-ab92-20a08c616093'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/racc_man/Monot/Monot_ROS2/build/monot_slam'), ('TURTLEBOT3_MODEL', 'burger'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('VTE_VERSION', '6800'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk'), ('WSLENV', '')]), 'shell': False}
+[2.276191] (monot_slam) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/monot_slam_node.dir/rclcpp_components/node_main_monot_slam_node.cpp.o\x1b[0m\n'}
+[2.276311] (monot_slam) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/monot_slam.dir/src/monot_slam_node.cpp.o\x1b[0m\n'}
+[2.303359] (-) TimerEvent: {}
+[2.403596] (-) TimerEvent: {}
+[2.503842] (-) TimerEvent: {}
+[2.604112] (-) TimerEvent: {}
+[2.704368] (-) TimerEvent: {}
+[2.804623] (-) TimerEvent: {}
+[2.904889] (-) TimerEvent: {}
+[3.005162] (-) TimerEvent: {}
+[3.105440] (-) TimerEvent: {}
+[3.205727] (-) TimerEvent: {}
+[3.305985] (-) TimerEvent: {}
+[3.406249] (-) TimerEvent: {}
+[3.506666] (-) TimerEvent: {}
+[3.607045] (-) TimerEvent: {}
+[3.707573] (-) TimerEvent: {}
+[3.807967] (-) TimerEvent: {}
+[3.908276] (-) TimerEvent: {}
+[3.972633] (monot_slam) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable monot_slam_node\x1b[0m\n'}
+[4.008429] (-) TimerEvent: {}
+[4.064264] (monot_slam) StdoutLine: {'line': b'[ 75%] Built target monot_slam_node\n'}
+[4.108634] (-) TimerEvent: {}
+[4.209107] (-) TimerEvent: {}
+[4.309564] (-) TimerEvent: {}
+[4.409900] (-) TimerEvent: {}
+[4.510361] (-) TimerEvent: {}
+[4.610723] (-) TimerEvent: {}
+[4.711175] (-) TimerEvent: {}
+[4.811643] (-) TimerEvent: {}
+[4.912105] (-) TimerEvent: {}
+[5.012607] (-) TimerEvent: {}
+[5.113042] (-) TimerEvent: {}
+[5.213367] (-) TimerEvent: {}
+[5.313974] (-) TimerEvent: {}
+[5.414577] (-) TimerEvent: {}
+[5.514961] (-) TimerEvent: {}
+[5.615592] (-) TimerEvent: {}
+[5.716179] (-) TimerEvent: {}
+[5.816676] (-) TimerEvent: {}
+[5.917099] (-) TimerEvent: {}
+[6.017652] (-) TimerEvent: {}
+[6.118154] (-) TimerEvent: {}
+[6.218622] (-) TimerEvent: {}
+[6.319098] (-) TimerEvent: {}
+[6.419559] (-) TimerEvent: {}
+[6.520115] (-) TimerEvent: {}
+[6.620640] (-) TimerEvent: {}
+[6.720982] (-) TimerEvent: {}
+[6.821521] (-) TimerEvent: {}
+[6.922085] (-) TimerEvent: {}
+[7.022488] (-) TimerEvent: {}
+[7.123028] (-) TimerEvent: {}
+[7.223533] (-) TimerEvent: {}
+[7.324028] (-) TimerEvent: {}
+[7.424467] (-) TimerEvent: {}
+[7.525034] (-) TimerEvent: {}
+[7.625411] (-) TimerEvent: {}
+[7.725969] (-) TimerEvent: {}
+[7.826556] (-) TimerEvent: {}
+[7.927099] (-) TimerEvent: {}
+[8.027770] (-) TimerEvent: {}
+[8.128368] (-) TimerEvent: {}
+[8.228772] (-) TimerEvent: {}
+[8.329283] (-) TimerEvent: {}
+[8.429773] (-) TimerEvent: {}
+[8.530143] (-) TimerEvent: {}
+[8.630636] (-) TimerEvent: {}
+[8.731196] (-) TimerEvent: {}
+[8.831591] (-) TimerEvent: {}
+[8.932143] (-) TimerEvent: {}
+[9.032715] (-) TimerEvent: {}
+[9.133246] (-) TimerEvent: {}
+[9.233655] (-) TimerEvent: {}
+[9.334204] (-) TimerEvent: {}
+[9.434614] (-) TimerEvent: {}
+[9.535186] (-) TimerEvent: {}
+[9.635775] (-) TimerEvent: {}
+[9.736342] (-) TimerEvent: {}
+[9.836883] (-) TimerEvent: {}
+[9.937201] (-) TimerEvent: {}
+[10.037589] (-) TimerEvent: {}
+[10.138167] (-) TimerEvent: {}
+[10.238684] (-) TimerEvent: {}
+[10.339286] (-) TimerEvent: {}
+[10.439826] (-) TimerEvent: {}
+[10.540255] (-) TimerEvent: {}
+[10.640835] (-) TimerEvent: {}
+[10.741404] (-) TimerEvent: {}
+[10.841962] (-) TimerEvent: {}
+[10.942585] (-) TimerEvent: {}
+[11.043136] (-) TimerEvent: {}
+[11.143736] (-) TimerEvent: {}
+[11.244288] (-) TimerEvent: {}
+[11.344794] (-) TimerEvent: {}
+[11.445309] (-) TimerEvent: {}
+[11.546019] (-) TimerEvent: {}
+[11.646665] (-) TimerEvent: {}
+[11.747351] (-) TimerEvent: {}
+[11.847860] (-) TimerEvent: {}
+[11.948564] (-) TimerEvent: {}
+[12.049286] (-) TimerEvent: {}
+[12.150075] (-) TimerEvent: {}
+[12.179635] (monot_slam) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libmonot_slam.so\x1b[0m\n'}
+[12.250317] (-) TimerEvent: {}
+[12.351025] (-) TimerEvent: {}
+[12.451455] (-) TimerEvent: {}
+[12.532862] (monot_slam) StdoutLine: {'line': b'[100%] Built target monot_slam\n'}
+[12.539130] (monot_slam) CommandEnded: {'returncode': 0}
+[12.539841] (monot_slam) JobProgress: {'identifier': 'monot_slam', 'progress': 'install'}
+[12.544192] (monot_slam) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/racc_man/Monot/Monot_ROS2/build/monot_slam'], 'cwd': '/home/racc_man/Monot/Monot_ROS2/build/monot_slam', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'racc_man'), ('ROS_PACKAGE_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/share'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/racc_man/ORB-SLAM3/ORB_SLAM3/lib:/home/racc_man/ORB-SLAM/ORB_SLAM3/lib:/home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo/lib:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera/lib:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/racc_man'), ('OLDPWD', '/home/racc_man/Monot'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install:/home/racc_man/turtlebot3_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'racc_man'), ('NAME', 'TatsuoDeskTop'), ('WSL_INTEROP', '/run/WSL/435_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/x86_64-linux-gnu/pkgconfig:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/usbipd-win/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files/CMake/bin:/mnt/c/Users/tatsu/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/tatsu/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/tatsu/AppData/Local/GitHubDesktop/bin:/mnt/c/Program Files/CMake/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:f42044f6-a1c0-4760-ab92-20a08c616093'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/racc_man/Monot/Monot_ROS2/build/monot_slam'), ('TURTLEBOT3_MODEL', 'burger'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs/local/lib/python3.10/dist-packages:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('VTE_VERSION', '6800'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/racc_man/Monot/Monot_ROS2/install/monot_slam:/home/racc_man/turtlebot3_ws/install/turtlebot3:/home/racc_man/turtlebot3_ws/install/turtlebot3_simulations:/home/racc_man/turtlebot3_ws/install/turtlebot3_bringup:/home/racc_man/turtlebot3_ws/install/turtlebot3_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_navigation2:/home/racc_man/turtlebot3_ws/install/turtlebot3_fake_node:/home/racc_man/turtlebot3_ws/install/turtlebot3_msgs:/home/racc_man/turtlebot3_ws/install/turtlebot3_gazebo:/home/racc_man/turtlebot3_ws/install/turtlebot3_description:/home/racc_man/turtlebot3_ws/install/turtlebot3_cartographer:/home/racc_man/turtlebot3_ws/install/turtlebot3_teleop:/home/racc_man/turtlebot3_ws/install/turtlebot3_example:/opt/ros/humble:/home/racc_man/turtlebot3_ws/install/realsense_gazebo_plugin:/home/racc_man/turtlebot3_ws/install/realsense2_description:/home/racc_man/turtlebot3_ws/install/realsense2_camera:/home/racc_man/turtlebot3_ws/install/realsense2_camera_msgs:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_examples:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/racc_man/turtlebot3_ws/install/dynamixel_sdk'), ('WSLENV', '')]), 'shell': False}
+[12.548659] (monot_slam) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[12.548967] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib/monot_slam/monot_slam_node\n'}
+[12.549299] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/include\n'}
+[12.549445] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/include/monot_slam\n'}
+[12.549486] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/include/monot_slam/monot_slam_node.hpp\n'}
+[12.549757] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/library_path.sh\n'}
+[12.549982] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/library_path.dsv\n'}
+[12.550036] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib/libmonot_slam.so\n'}
+[12.551525] (-) TimerEvent: {}
+[12.552688] (monot_slam) StdoutLine: {'line': b'-- Set runtime path of "/home/racc_man/Monot/Monot_ROS2/install/monot_slam/lib/libmonot_slam.so" to ""\n'}
+[12.553011] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/ament_index/resource_index/package_run_dependencies/monot_slam\n'}
+[12.553133] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/ament_index/resource_index/parent_prefix_path/monot_slam\n'}
+[12.553214] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/ament_prefix_path.sh\n'}
+[12.553303] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/ament_prefix_path.dsv\n'}
+[12.553387] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/path.sh\n'}
+[12.553423] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/environment/path.dsv\n'}
+[12.553501] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/local_setup.bash\n'}
+[12.553534] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/local_setup.sh\n'}
+[12.553627] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/local_setup.zsh\n'}
+[12.553712] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/local_setup.dsv\n'}
+[12.553796] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/package.dsv\n'}
+[12.553910] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/ament_index/resource_index/packages/monot_slam\n'}
+[12.554043] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/ament_index/resource_index/rclcpp_components/monot_slam\n'}
+[12.554257] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[12.554370] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[12.554576] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[12.554641] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/cmake/monot_slamConfig.cmake\n'}
+[12.554673] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/cmake/monot_slamConfig-version.cmake\n'}
+[12.554695] (monot_slam) StdoutLine: {'line': b'-- Installing: /home/racc_man/Monot/Monot_ROS2/install/monot_slam/share/monot_slam/package.xml\n'}
+[12.555546] (monot_slam) CommandEnded: {'returncode': 0}
+[12.565607] (monot_slam) JobEnded: {'identifier': 'monot_slam', 'rc': 0}
+[12.566112] (-) EventReactorShutdown: {}
