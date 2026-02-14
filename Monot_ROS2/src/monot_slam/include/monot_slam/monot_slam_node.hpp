@@ -20,11 +20,11 @@ class MonotSlamNode : public rclcpp::Node
         ~MonotSlamNode();
 
     private:
-        void recieveImage(const sensor_msgs::msg::Image::SharedPtr msg);
+        void recieve_image(const sensor_msgs::msg::Image::SharedPtr msg);
 
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr img_sub_;
         std::shared_ptr<ORB_SLAM3::System> slam_;
-        cv_bridge::CvImagePtr cvImg_;
+        cv_bridge::CvImagePtr cv_img_;
 };
 
 #endif
