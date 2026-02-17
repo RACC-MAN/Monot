@@ -10,8 +10,8 @@
 
 #include "sensor_msgs/msg/image.hpp"
 
-#define CNF_VOCAVULARY_PATH "/home/racc_man/ORB-SLAM3/ORB_SLAM3/Vocabulary/ORBvoc.txt"
-#define CNF_SETTING_PATH    "/home/racc_man/ORB-SLAM3/ORB_SLAM3/Examples/Monocular/RealSense_D435i.yaml"
+#define CNF_VOCAVULARY_PATH "/home/keisoku/ORB-SLAM3/ORB_SLAM3/Vocabulary/ORBvoc.txt"
+#define CNF_SETTING_PATH    "/home/keisoku/ORB-SLAM3/ORB_SLAM3/Examples/Monocular/RealSense_D435i.yaml"
 
 class MonotSlamNode : public rclcpp::Node
 {
