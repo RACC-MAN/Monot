@@ -2,61 +2,97 @@ import cv2
 import numpy as np
 import glob
 import os
+import sys
 
 # === カメラキャリブレーション ===
 
 # 設定
-CHECKERBOARD = (7,10) # 内側コーナー数
-square_size = 0.023    # 25mm = 0.025m
+CHECKERBOARD = (7, 10)  # 内側コーナー数 (cols, rows)
+square_size = 23.0      # mm 単位
 
-images = glob.glob('../photos/*.jpg')
+# 画像パターン（スクリプトの場所からの相対パス）
+script_dir = os.path.dirname(os.path.abspath(__file__))
+images = glob.glob(os.path.join(script_dir, '..', 'photos', '*.jpg'))
 
-# 3D点生成
-objp = np.zeros((CHECKERBOARD[0]*CHECKERBOARD[1],3), np.float32)
-objp[:,:2] = np.mgrid[0:CHECKERBOARD[0],0:CHECKERBOARD[1]].T.reshape(-1,2)
+if len(images) == 0:
+    print('No images found in ../photos/*.jpg – キャリブレーション用画像を配置してください。')
+    sys.exit(1)
+
+# 3D点生成 (CHECKERBOARD の内側コーナー数に合わせる)
+objp = np.zeros((CHECKERBOARD[0] * CHECKERBOARD[1], 3), np.float32)
+objp[:, :2] = np.mgrid[0:CHECKERBOARD[0], 0:CHECKERBOARD[1]].T.reshape(-1, 2)
 objp *= square_size
 
 objpoints = []
 imgpoints = []
+image_size = None
 
-# コーナー検出
+# 角点検出の基準
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+
 for fname in images:
     img = cv2.imread(fname)
+    if img is None:
+        print(f'Warning: could not read image {fname}, skipping')
+        continue
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    image_size = gray.shape[::-1]   # (width, height)
-    ret, corners = cv2.findChessboardCorners(gray, CHECKERBOARD, None)
+    if image_size is None:
+        image_size = gray.shape[::-1]  # (width, height)
+
+    flags = cv2.CALIB_CB_ADAPTIVE_THRESH | cv2.CALIB_CB_NORMALIZE_IMAGE
+    ret, corners = cv2.findChessboardCorners(gray, CHECKERBOARD, flags)
 
     if ret:
-        objpoints.append(objp)
-        imgpoints.append(corners)
+        # 角点をサブピクセル精度に補正
+        corners_sub = cv2.cornerSubPix(gray, corners, (11, 11), (-1, -1), criteria)
+        objpoints.append(objp.copy())
+        imgpoints.append(corners_sub)
+        cv2.drawChessboardCorners(img, CHECKERBOARD, corners_sub, ret)
+    else:
+        print(f'Chessboard not found in {fname}')
 
-        cv2.drawChessboardCorners(img, CHECKERBOARD, corners, ret)
+if len(objpoints) == 0:
+    print('No valid chessboard detections; check CHECKERBOARD and images.')
+    sys.exit(1)
 
 # キャリブレーション
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(
-    objpoints, imgpoints, gray.shape[::-1], None, None)
+    objpoints, imgpoints, image_size, None, None)
 
-print("Camera matrix:\n", mtx)
-print("Distortion:\n", dist)
-print("Reprojection error:", ret)
+print('Camera matrix:\n', mtx)
+print('Distortion:\n', dist.ravel())
+
+# 再投影誤差を厳密に計算
+tot_error = 0
+total_points = 0
+for i in range(len(objpoints)):
+    imgpoints2, _ = cv2.projectPoints(objpoints[i], rvecs[i], tvecs[i], mtx, dist)
+    error = cv2.norm(imgpoints[i], imgpoints2, cv2.NORM_L2)
+    tot_error += error ** 2
+    total_points += len(imgpoints2)
+mean_error = np.sqrt(tot_error / total_points)
+print('Reprojection RMS (calibrateCamera returned):', ret)
+print('Reprojection mean error (per-point):', mean_error)
 
 
 # === ORB-SLAM3 YAML生成 ===
 
-fx = mtx[0,0]
-fy = mtx[1,1]
-cx = mtx[0,2]
-cy = mtx[1,2]
+fx = float(mtx[0, 0])
+fy = float(mtx[1, 1])
+cx = float(mtx[0, 2])
+cy = float(mtx[1, 2])
 
-k1 = dist[0][0]
-k2 = dist[0][1]
-p1 = dist[0][2]
-p2 = dist[0][3]
-k3 = dist[0][4]
+# dist は (1,5) か (k,1,5) などの形状なのでフラットにして取得
+dist_flat = dist.ravel()
+k1 = float(dist_flat[0]) if dist_flat.size > 0 else 0.0
+k2 = float(dist_flat[1]) if dist_flat.size > 1 else 0.0
+p1 = float(dist_flat[2]) if dist_flat.size > 2 else 0.0
+p2 = float(dist_flat[3]) if dist_flat.size > 3 else 0.0
+k3 = float(dist_flat[4]) if dist_flat.size > 4 else 0.0
 
-width = image_size[0]
-height = image_size[1]
+width = int(image_size[0])
+height = int(image_size[1])
 fps = 20  # 実測値に変更推奨
 
 yaml_content = f"""%YAML:1.0
@@ -115,10 +151,10 @@ Viewer.ViewpointZ: -3.5
 Viewer.ViewpointF: 500.0
 """
 
-output_path = "camera_param.yaml"
+output_path = os.path.join(script_dir, 'camera_param.yaml')
 
-with open(output_path, "w") as f:
+with open(output_path, 'w') as f:
     f.write(yaml_content)
 
-print(f"ORB-SLAM3 Example-style YAML saved to {output_path}")
+print(f'ORB-SLAM3 Example-style YAML saved to {output_path}')
 
