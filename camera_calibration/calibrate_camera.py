@@ -9,7 +9,7 @@ import os
 CHECKERBOARD = (7,10) # 内側コーナー数
 square_size = 0.023    # 25mm = 0.025m
 
-images = glob.glob('./photos/*.jpg')
+images = glob.glob('../photos/*.jpg')
 
 # 3D点生成
 objp = np.zeros((CHECKERBOARD[0]*CHECKERBOARD[1],3), np.float32)
