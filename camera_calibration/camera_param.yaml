@@ -18,13 +18,14 @@ Camera1.k1: 0.02561990396631433
 Camera1.k2: -1.144063992776709
 Camera1.p1: -2.026785938123617e-05
 Camera1.p2: 0.0004452377463028525
+Camera1.k3: 4.422708425785674
 
 # Camera resolution
 Camera.width: 320
 Camera.height: 240
 
 # Camera frames per second 
-Camera.fps: 30
+Camera.fps: 20
 
 # Color order of the images (0: BGR, 1: RGB)
 Camera.RGB: 1
@@ -32,11 +33,11 @@ Camera.RGB: 1
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
-ORBextractor.nFeatures: 1250
+ORBextractor.nFeatures: 2000
 ORBextractor.scaleFactor: 1.2
 ORBextractor.nLevels: 8
-ORBextractor.iniThFAST: 20
-ORBextractor.minThFAST: 7
+ORBextractor.iniThFAST: 10
+ORBextractor.minThFAST: 5
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters

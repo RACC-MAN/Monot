@@ -6,7 +6,7 @@ CamCaptureNode::CamCaptureNode(const rclcpp::NodeOptions &options) : Node("cam_c
 
     img_pub_ = create_publisher<sensor_msgs::msg::Image>("camera_img", 10);
     timer_ = create_wall_timer(
-        std::chrono::milliseconds(20), 
+        std::chrono::milliseconds(50), 
         std::bind(&CamCaptureNode::timer_callback, this)
     );
 
@@ -17,6 +17,7 @@ CamCaptureNode::CamCaptureNode(const rclcpp::NodeOptions &options) : Node("cam_c
       rclcpp::shutdown();
       return;
     }
+    RCLCPP_INFO(get_logger(), "Camera connected.");
 }
 
 void CamCaptureNode::timer_callback()

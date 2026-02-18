@@ -21,6 +21,7 @@ MonotSlamNode::~MonotSlamNode()
 
 void MonotSlamNode::recieve_image(const sensor_msgs::msg::Image::SharedPtr msg)
 {
+    // RCLCPP_INFO(this->get_logger(), "Image received.");
     try
     {
         cv_img_ = cv_bridge::toCvCopy(msg);
@@ -31,7 +32,7 @@ void MonotSlamNode::recieve_image(const sensor_msgs::msg::Image::SharedPtr msg)
         return;
     }
     
-     slam_->TrackMonocular(cv_img_->image, msg->header.stamp.sec);
+    slam_->TrackMonocular(cv_img_->image, msg->header.stamp.sec);
 }
 
 #include <rclcpp_components/register_node_macro.hpp>

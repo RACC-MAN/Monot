@@ -53,10 +53,11 @@ k1 = dist[0][0]
 k2 = dist[0][1]
 p1 = dist[0][2]
 p2 = dist[0][3]
+k3 = dist[0][4]
 
 width = image_size[0]
 height = image_size[1]
-fps = 30  # 実測値に変更推奨
+fps = 20  # 実測値に変更推奨
 
 yaml_content = f"""%YAML:1.0
 
@@ -78,6 +79,7 @@ Camera1.k1: {k1}
 Camera1.k2: {k2}
 Camera1.p1: {p1}
 Camera1.p2: {p2}
+Camera1.k3: {k3}
 
 # Camera resolution
 Camera.width: {width}
@@ -92,11 +94,11 @@ Camera.RGB: 1
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
-ORBextractor.nFeatures: 1250
+ORBextractor.nFeatures: 2000
 ORBextractor.scaleFactor: 1.2
 ORBextractor.nLevels: 8
-ORBextractor.iniThFAST: 20
-ORBextractor.minThFAST: 7
+ORBextractor.iniThFAST: 10
+ORBextractor.minThFAST: 5
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters

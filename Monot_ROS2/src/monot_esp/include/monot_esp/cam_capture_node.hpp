@@ -19,7 +19,8 @@ class CamCaptureNode : public rclcpp::Node
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr img_pub_;
         rclcpp::TimerBase::SharedPtr timer_;
 
-        std::string url_ = "http://172.17.134.88:81/stream";
+        // std::string url_ = "http://172.17.134.88:81/stream";
+        std::string url_ = "http://10.216.44.88:81/stream";
 
 };
 
