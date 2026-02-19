@@ -7,7 +7,7 @@ import sys
 # === カメラキャリブレーション ===
 
 # 設定
-CHECKERBOARD = (7, 10)  # 内側コーナー数 (cols, rows)
+CHECKERBOARD = (10, 7)  # 内側コーナー数 (cols, rows)
 square_size = 23.0      # mm 単位
 
 # 画像パターン（スクリプトの場所からの相対パス）
@@ -53,6 +53,8 @@ for fname in images:
         cv2.drawChessboardCorners(img, CHECKERBOARD, corners_sub, ret)
     else:
         print(f'Chessboard not found in {fname}')
+
+    # cv2.imwrite(fname.replace('.jpg', '_corners.jpg').replace('.png', '_corners.png'), img)
 
 if len(objpoints) == 0:
     print('No valid chessboard detections; check CHECKERBOARD and images.')

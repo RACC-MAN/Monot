@@ -6,7 +6,7 @@ CamCaptureNode::CamCaptureNode(const rclcpp::NodeOptions &options) : Node("cam_c
 
     img_pub_ = create_publisher<sensor_msgs::msg::Image>("camera_img", 10);
     timer_ = create_wall_timer(
-        std::chrono::milliseconds(50), 
+        std::chrono::milliseconds(10), 
         std::bind(&CamCaptureNode::timer_callback, this)
     );
 
@@ -24,6 +24,7 @@ void CamCaptureNode::timer_callback()
 {
     cv::Mat frame;
     cap_ >> frame;
+    cv::flip(frame, frame, 1);
     if(frame.empty())
     {
         RCLCPP_INFO(get_logger(), "Frame is empty.");
