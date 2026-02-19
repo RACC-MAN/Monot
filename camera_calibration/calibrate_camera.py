@@ -11,11 +11,13 @@ CHECKERBOARD = (7, 10)  # 内側コーナー数 (cols, rows)
 square_size = 23.0      # mm 単位
 
 # 画像パターン（スクリプトの場所からの相対パス）
-script_dir = os.path.dirname(os.path.abspath(__file__))
-images = glob.glob(os.path.join(script_dir, '..', 'photos', '*.jpg'))
+PHOTO_DIR = "../photos/webcam_320x240"  # キャリブレーション画像が入っているディレクトリ
+OUTUPT_FILE = "webcam_320x240_param.yaml"
+
+images = glob.glob(os.path.join(PHOTO_DIR, '*.png')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpg')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpeg'))
 
 if len(images) == 0:
-    print('No images found in ../photos/*.jpg – キャリブレーション用画像を配置してください。')
+    print(f'No images found in {PHOTO_DIR}. Please check the path and add calibration photos.')
     sys.exit(1)
 
 # 3D点生成 (CHECKERBOARD の内側コーナー数に合わせる)
@@ -151,10 +153,8 @@ Viewer.ViewpointZ: -3.5
 Viewer.ViewpointF: 500.0
 """
 
-output_path = os.path.join(script_dir, 'camera_param.yaml')
 
-with open(output_path, 'w') as f:
+with open(OUTUPT_FILE, 'w') as f:
     f.write(yaml_content)
 
-print(f'ORB-SLAM3 Example-style YAML saved to {output_path}')
-
+print(f'ORB-SLAM3 Example-style YAML saved to {OUTUPT_FILE}')
