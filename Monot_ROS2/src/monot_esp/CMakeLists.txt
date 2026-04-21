@@ -19,11 +19,17 @@ find_package(OpenCV REQUIRED)
 
 ament_auto_add_library(${PROJECT_NAME} SHARED
   src/cam_capture_node.cpp
+  src/tcp_image_reciever.cpp
 ) 
 
 rclcpp_components_register_node(${PROJECT_NAME}
   PLUGIN "CamCaptureNode"
   EXECUTABLE cam_capture_node
+)
+
+rclcpp_components_register_node(${PROJECT_NAME}
+  PLUGIN "TcpImageReciever"
+  EXECUTABLE tcp_image_reciever
 )
 
 target_link_libraries(${PROJECT_NAME}
