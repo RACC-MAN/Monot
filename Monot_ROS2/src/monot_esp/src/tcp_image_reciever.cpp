@@ -65,7 +65,7 @@ void TcpImageReciever::receive_loop()
         ).toImageMsg();
 
         img_pub_->publish(*msg);
-        // std::cout << "Image published, size: " << img.cols << "x" << img.rows << std::endl;
+        std::cout << "Image published, size: " << img.cols << "x" << img.rows << std::endl;
     }
 }
 
