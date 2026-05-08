@@ -69,9 +69,12 @@ void UdpImageReciever::receive_loop()
             cv::Mat img = cv::imdecode(img_data, cv::IMREAD_COLOR);
             if (!img.empty()) 
             {
+                cv::flip(img, img, 1);
+                if(SCALE_SIZE != 1) cv::resize(img, img, cv::Size(), SCALE_SIZE, SCALE_SIZE, cv::INTER_LINEAR);
+
                 auto msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", img).toImageMsg();
                 img_pub_->publish(*msg);
-                RCLCPP_INFO(get_logger(), "Published complete image for frame %u, image size: %lu", frame_id, img_data.size());
+                RCLCPP_INFO(get_logger(), "Published complete image for frame %u, image size: %u x %u", frame_id, img.rows, img.cols);
             } 
             else RCLCPP_ERROR(get_logger(), "Failed to decode image for frame %u", frame_id);
 

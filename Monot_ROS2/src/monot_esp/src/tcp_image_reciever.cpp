@@ -57,6 +57,7 @@ void TcpImageReciever::receive_loop()
             std::cout << "Decode failed, skipping frame" << std::endl;
             return;
         }
+        cv::flip(img, img, 1);
 
         auto msg = cv_bridge::CvImage(
             std_msgs::msg::Header(),

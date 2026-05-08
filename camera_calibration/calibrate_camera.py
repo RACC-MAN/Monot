@@ -11,8 +11,14 @@ CHECKERBOARD = (10, 7)  # 内側コーナー数 (cols, rows)
 square_size = 23.0      # mm 単位
 
 # 画像パターン（スクリプトの場所からの相対パス）
-PHOTO_DIR = "../photos/webcam_320x240"  # キャリブレーション画像が入っているディレクトリ
-OUTUPT_FILE = "webcam_320x240_param.yaml"
+# PHOTO_DIR = "../photos/webcam_320x240"  # キャリブレーション画像が入っているディレクトリ
+# OUTUPT_FILE = "webcam_320x240_param.yaml"
+# PHOTO_DIR = "../photos/webcam_640x480"
+# OUTUPT_FILE = "webcam_640x480_param.yaml"
+PHOTO_DIR = "../photos/udp_640x480"
+OUTUPT_FILE = "udp_1280x960_param.yaml"
+
+SCALE_SIZE = 2.0
 
 images = glob.glob(os.path.join(PHOTO_DIR, '*.png')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpg')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpeg'))
 
@@ -34,6 +40,7 @@ criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
 for fname in images:
     img = cv2.imread(fname)
+    img = cv2.resize(img, (0, 0), fx=SCALE_SIZE, fy=SCALE_SIZE, interpolation=cv2.INTER_AREA)  # 画像サイズを縮小して処理を高速化
     if img is None:
         print(f'Warning: could not read image {fname}, skipping')
         continue
@@ -54,7 +61,8 @@ for fname in images:
     else:
         print(f'Chessboard not found in {fname}')
 
-    # cv2.imwrite(fname.replace('.jpg', '_corners.jpg').replace('.png', '_corners.png'), img)
+    output_name = PHOTO_DIR + '/corners_' + os.path.basename(fname)
+    cv2.imwrite(output_name, img)
 
 if len(objpoints) == 0:
     print('No valid chessboard detections; check CHECKERBOARD and images.')

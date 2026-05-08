@@ -22,7 +22,7 @@ ImageCaptureNode::ImageCaptureNode(const rclcpp::NodeOptions &options) : Node("i
             break;
 
         case 1:
-            RCLCPP_INFO(get_logger(), "Method : LOOP");
+            RCLCPP_INFO(get_logger(), "Method : ON DEMAND");
             recv_thread_ = std::thread(&ImageCaptureNode::loop, this);
             break;
         

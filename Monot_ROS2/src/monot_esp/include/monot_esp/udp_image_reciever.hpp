@@ -14,6 +14,8 @@
 #define PORT 9000
 #define BUFFER_SIZE 1500
 
+const int SCALE_SIZE = 2;
+
 struct FrameBuffer {
     std::vector<std::vector<uint8_t>> packets;
     int total_packets;
