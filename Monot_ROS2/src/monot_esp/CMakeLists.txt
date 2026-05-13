@@ -18,15 +18,15 @@ find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 
 ament_auto_add_library(${PROJECT_NAME} SHARED
-  src/cam_capture_node.cpp
+  src/http_image_capture.cpp
   src/image_capture_node.cpp
   src/tcp_image_reciever.cpp
   src/udp_image_reciever.cpp
 ) 
 
 rclcpp_components_register_node(${PROJECT_NAME}
-  PLUGIN "CamCaptureNode"
-  EXECUTABLE cam_capture_node
+  PLUGIN "HttpImageCapture"
+  EXECUTABLE http_image_capture_node
 )
 
 rclcpp_components_register_node(${PROJECT_NAME}

@@ -15,7 +15,8 @@
 // Path to the settings file for the camera. This should be a YAML file containing the camera intrinsics and distortion coefficients.
 // #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/webcam_320x240_param.yaml"
 // #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/camera_ov3660_param.yaml"
-#define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/udp_1280x960_param.yaml"
+#define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/udp_640x480_param.yaml"
+// #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/udp_1280x960_param.yaml"
 
 class MonotSlamNode : public rclcpp::Node
 {

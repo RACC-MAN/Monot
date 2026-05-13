@@ -26,7 +26,7 @@ class ImageCaptureNode : public rclcpp::Node
 
         int frame_count_ = 0;
         std::string save_directory_ = "./captured_images/";
-        int save_method_ = 1; // 0: loop, 1: on demand
+        int save_method_ = 1; // 0: timer, 1: on demand
 };
 
 #endif

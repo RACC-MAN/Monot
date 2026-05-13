@@ -15,10 +15,11 @@ square_size = 23.0      # mm 単位
 # OUTUPT_FILE = "webcam_320x240_param.yaml"
 # PHOTO_DIR = "../photos/webcam_640x480"
 # OUTUPT_FILE = "webcam_640x480_param.yaml"
-PHOTO_DIR = "../photos/udp_640x480"
-OUTUPT_FILE = "udp_1280x960_param.yaml"
+PHOTO_DIR = "../../photos/udp_640x480"
+# OUTUPT_FILE = "udp_1280x960_param.yaml"
+OUTUPT_FILE = "udp_640x480_param.yaml"
 
-SCALE_SIZE = 2.0
+SCALE_SIZE = 1.0
 
 images = glob.glob(os.path.join(PHOTO_DIR, '*.png')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpg')) + glob.glob(os.path.join(PHOTO_DIR, '*.jpeg'))
 

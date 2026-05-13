@@ -1,15 +1,15 @@
-#ifndef MONOT_ESP__CAM_CAPTURE_NODE
-#define MONOT_ESP__CAM_CAPTURE_NODE
+#ifndef MONOT_ESP__HTTP_IMAGE_CAPTURE
+#define MONOT_ESP__HTTP_IMAGE_CAPTURE
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.h>
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.h>
 
-class CamCaptureNode : public rclcpp::Node
+class HttpImageCapture : public rclcpp::Node
 {
     public :
-        explicit CamCaptureNode(const rclcpp::NodeOptions &options);
+        explicit HttpImageCapture(const rclcpp::NodeOptions &options);
     
     private:
         void timer_callback();

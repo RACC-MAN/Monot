@@ -1,13 +1,12 @@
-#include "monot_esp/cam_capture_node.hpp"
+#include "monot_esp/http_image_capture.hpp"
 
-CamCaptureNode::CamCaptureNode(const rclcpp::NodeOptions &options) : Node("cam_capture_node", options)
+HttpImageCapture::HttpImageCapture(const rclcpp::NodeOptions &options) : Node("http_image_capture", options)
 {
-    RCLCPP_INFO(get_logger(), "Camera Capture Node Started.");
-
+    RCLCPP_INFO(get_logger(), "HTTP Image Capture Node Started.");
     img_pub_ = create_publisher<sensor_msgs::msg::Image>("camera_img", 10);
     timer_ = create_wall_timer(
         std::chrono::milliseconds(10), 
-        std::bind(&CamCaptureNode::timer_callback, this)
+        std::bind(&HttpImageCapture::timer_callback, this)
     );
 
     RCLCPP_INFO(get_logger(), "Connecting to camera-server ...");
@@ -20,7 +19,7 @@ CamCaptureNode::CamCaptureNode(const rclcpp::NodeOptions &options) : Node("cam_c
     RCLCPP_INFO(get_logger(), "Camera connected.");
 }
 
-void CamCaptureNode::timer_callback()
+void HttpImageCapture::timer_callback()
 {
     cv::Mat frame;
     cap_ >> frame;
@@ -42,4 +41,4 @@ void CamCaptureNode::timer_callback()
 }
 
 #include <rclcpp_components/register_node_macro.hpp>
-RCLCPP_COMPONENTS_REGISTER_NODE(CamCaptureNode)
+RCLCPP_COMPONENTS_REGISTER_NODE(HttpImageCapture)
