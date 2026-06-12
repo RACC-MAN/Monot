@@ -1,19 +1,18 @@
+
+#include "camera_pins.h"
 #include "esp_camera.h"
 #include <WiFi.h>
 #include <WiFiUdp.h>
 #include <M5Unified.h>
 
 
-#define USE_ATOMS3R_CAM
-// #define USE_ATOMS3R_M12
-
 #define STA_MODE
 // #define AP_MODE
 
 // WiFi設定
 const char* SSID = "ssid";
-const char* PASSWORD = "pass";
-const char* HOST = "192.168.11.4";  // UbuntuのIP
+const char* PASSWORD = "password";
+const char* HOST = "ipadress";
 
 // 送信先PC
 const int IMAGE_PORT = 9000;
@@ -24,24 +23,10 @@ WiFiUDP udp_imu;
 
 #define PACKET_SIZE 1400
 uint16_t frame_id = 0;
+const int  JPEG_QUORITY = 12;
 
-#define POWER_GPIO_NUM 18
-#define PWDN_GPIO_NUM  -1
-#define RESET_GPIO_NUM -1
-#define XCLK_GPIO_NUM  21
-#define SIOD_GPIO_NUM  12
-#define SIOC_GPIO_NUM  9
-#define Y9_GPIO_NUM    13
-#define Y8_GPIO_NUM    11
-#define Y7_GPIO_NUM    17
-#define Y6_GPIO_NUM    4
-#define Y5_GPIO_NUM    48
-#define Y4_GPIO_NUM    46
-#define Y3_GPIO_NUM    42
-#define Y2_GPIO_NUM    3
-#define VSYNC_GPIO_NUM 10
-#define HREF_GPIO_NUM  14
-#define PCLK_GPIO_NUM  40
+uint8_t *jpeg_buf = NULL;
+size_t jpeg_len = 0;
 
 static camera_config_t camera_config = {
     .pin_pwdn     = PWDN_GPIO_NUM,
@@ -66,24 +51,17 @@ static camera_config_t camera_config = {
     .ledc_timer   = LEDC_TIMER_0,
     .ledc_channel = LEDC_CHANNEL_0,
 
-#ifdef USE_ATOMS3R_CAM
-    .pixel_format = PIXFORMAT_RGB565,
+    .pixel_format = PIXFORMAT_YUV422,
     .frame_size   = FRAMESIZE_QVGA,
-#endif
 
-#ifdef USE_ATOMS3R_M12
-    .pixel_format = PIXFORMAT_JPEG,
-    .frame_size   = FRAMESIZE_UXGA,
-#endif
-
-    .jpeg_quality  = 12,
+    .jpeg_quality  = JPEG_QUORITY,
     .fb_count      = 2,
     .fb_location   = CAMERA_FB_IN_PSRAM,
     .grab_mode     = CAMERA_GRAB_LATEST,
     .sccb_i2c_port = 0,
 };
 
-struct ImuPacket
+struct ImuData
 {
   float ax;
   float ay;
@@ -93,6 +71,7 @@ struct ImuPacket
   float gy;
   float gz;
 };
+ImuData imu_bias;
 
 void send_image()
 {
@@ -103,11 +82,18 @@ void send_image()
       return;
   }
 
-  uint16_t total_packets = (fb->len + PACKET_SIZE - 1) / PACKET_SIZE;
+  bool complete = frame2jpg(fb, JPEG_QUORITY, &jpeg_buf, &jpeg_len);
+  if(!complete)
+  {
+    Serial.println("Frame to JPEG Failed");
+    return;
+  }
+
+  uint16_t total_packets = (jpeg_len + PACKET_SIZE - 1) / PACKET_SIZE;
 
   for (uint16_t i = 0; i < total_packets; i++) {
     int offset = i * PACKET_SIZE;
-    int fb_size = fb->len - offset;
+    int fb_size = jpeg_len - offset;
     int chunk = (PACKET_SIZE > fb_size) ? fb_size : PACKET_SIZE;
 
     udp_image.beginPacket(HOST, IMAGE_PORT);
@@ -122,7 +108,7 @@ void send_image()
     udp_image.write((uint8_t*)&tpk, 2);
 
     // データ
-    udp_image.write(fb->buf + offset, chunk);
+    udp_image.write(jpeg_buf + offset, chunk);
 
     udp_image.endPacket();
     delayMicroseconds(100);
@@ -130,15 +116,21 @@ void send_image()
 
   frame_id++;
   esp_camera_fb_return(fb);
+  fb = NULL;
+  free(jpeg_buf);
+  jpeg_buf = NULL;
 }
 
 void send_imu()
 {
-  ImuPacket pkt;
+  ImuData pkt;
 
   auto imu_update = M5.Imu.update();
-
-  if(!imu_update) return;
+  if(!imu_update)
+  {
+    Serial.println("Failed to get Imu Data.");
+    return;
+  }
 
   auto data = M5.Imu.getImuData();
 
@@ -146,9 +138,9 @@ void send_imu()
   pkt.ay = data.accel.y;
   pkt.az = data.accel.z;
 
-  pkt.gx = data.gyro.x;
-  pkt.gy = data.gyro.y;
-  pkt.gz = data.gyro.z;
+  pkt.gx = data.gyro.x - imu_bias.gx;
+  pkt.gy = data.gyro.y - imu_bias.gy;
+  pkt.gz = data.gyro.z - imu_bias.gz;
 
   udp_imu.beginPacket(HOST, IMU_PORT);
 
@@ -157,35 +149,72 @@ void send_imu()
     sizeof(pkt));
 
   udp_imu.endPacket();
+  Serial.printf("ax:%f  ay:%f  az:%f\r\n", data.accel.x, data.accel.y, data.accel.z);
+  Serial.printf("gx:%f  gy:%f  gz:%f\r\n", data.gyro.x, data.gyro.y, data.gyro.z);
+}
+
+void calibrate_gyro()
+{
+  Serial.println("Start Gyro-Caribration");
+
+  const int N = 100;
+  float sum_x = 0;
+  float sum_y = 0;
+  float sum_z = 0;
+
+  for(int i=0; i<N; i++)
+  {
+    bool updated = M5.Imu.update();
+    auto data = M5.Imu.getImuData();
+
+    sum_x += data.gyro.x;
+    sum_y += data.gyro.y;
+    sum_z += data.gyro.z;
+    delay(10);
+  }
+
+  imu_bias.gx = sum_x/N;
+  imu_bias.gy = sum_y/N;
+  imu_bias.gz = sum_z/N;
+
+  Serial.printf("Gyro Bias : %.5f %.5f %.5f\n", imu_bias.gx, imu_bias.gy, imu_bias.gz);
 }
 
 void setup()
 {
-  auto cfg = M5.config();
-  M5.begin(cfg);
-
   Serial.begin(115200);
+  delay(3000);
+  Serial.println("Started Setup");
 
   WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
   }
-  Serial.println("WiFi connected.");
+
+  Serial.println("WiFi Success");
 
   pinMode(POWER_GPIO_NUM, OUTPUT);
   digitalWrite(POWER_GPIO_NUM, LOW);
   delay(500);
+
   esp_err_t err = esp_camera_init(&camera_config);
   if (err != ESP_OK) {
-    Serial.println("Camera Init Fail");
-    delay(1000);
-    esp_restart();
-  } else {
-    Serial.println("Camera Init Success");
+    Serial.printf("Camera Init Fail: 0x%x\n", err);
+    while(true) delay(1000);
   }
+  Serial.println("Camera Init Success");
+
+  auto cfg = M5.config();
+  cfg.serial_baudrate = 115200;
+  M5.begin(cfg);
+  M5.Imu.begin();
+  Serial.printf("IMU Enabled = %d\n", M5.Imu.isEnabled());
+  Serial.println("M5 Init Success");
 
   udp_image.begin(IMAGE_PORT);
   udp_imu.begin(IMU_PORT);
+
+  calibrate_gyro();
 }
 
 
@@ -193,5 +222,5 @@ void loop() {
   send_image();
   send_imu();
 
-  delay(20);
+  delay(10);
 }

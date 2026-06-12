@@ -56,11 +56,13 @@ void UdpImageReciever::receive_loop()
         for (const auto &pkt : frame.packets) {
             if (pkt.empty()) {
                 complete = false;
+                // RCLCPP_WARN(get_logger(), "Frame %u is incomplete, waiting for more packets...", frame_id);
                 break;
             }
         }
 
         if(complete) {
+            RCLCPP_INFO(get_logger(), "Received complete frame %u with %u packets, assembling image...", frame_id, total_packets);
             std::vector<uint8_t> img_data;
             for (const auto &pkt : frame.packets) {
                 img_data.insert(img_data.end(), pkt.begin(), pkt.end());
@@ -69,7 +71,7 @@ void UdpImageReciever::receive_loop()
             cv::Mat img = cv::imdecode(img_data, cv::IMREAD_COLOR);
             if (!img.empty()) 
             {
-                cv::flip(img, img, 1);
+                if(flip_image) cv::flip(img, img, 1);
                 if(SCALE_SIZE != 1) cv::resize(img, img, cv::Size(), SCALE_SIZE, SCALE_SIZE, cv::INTER_LINEAR);
 
                 auto msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", img).toImageMsg();
