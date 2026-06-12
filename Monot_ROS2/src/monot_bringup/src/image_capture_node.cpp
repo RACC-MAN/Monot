@@ -1,4 +1,4 @@
-#include "monot_esp/image_capture_node.hpp"
+#include "monot_bringup/image_capture_node.hpp"
 
 ImageCaptureNode::ImageCaptureNode(const rclcpp::NodeOptions &options) : Node("image_capture_node", options)
 {

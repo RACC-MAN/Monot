@@ -1,5 +1,5 @@
-#ifndef MONOT_ESP__UDP_IMAGE_RECIEVER
-#define MONOT_ESP__UDP_IMAGE_RECIEVER
+#ifndef MONOT_BRINGUP__UDP_IMAGE_RECIEVER
+#define MONOT_BRINGUP__UDP_IMAGE_RECIEVER
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>

@@ -1,5 +1,5 @@
-#ifndef MONOT_ESP__IMAGE_CAOTURE_NODE
-#define MONOT_ESP__IMAGE_CAOTURE_NODE
+#ifndef MONOT_BRINGUP__IMAGE_CAPTURE_NODE
+#define MONOT_BRINGUP__IMAGE_CAPTURE_NODE
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.h>

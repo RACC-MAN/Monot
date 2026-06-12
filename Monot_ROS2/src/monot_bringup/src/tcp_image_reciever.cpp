@@ -1,4 +1,4 @@
-#include "monot_esp/tcp_image_reciever.hpp"
+#include "monot_bringup/tcp_image_reciever.hpp"
 TcpImageReciever::TcpImageReciever(const rclcpp::NodeOptions &options) : Node("tcp_image_reciever", options)
 {
     RCLCPP_INFO(get_logger(), "TCP Image Reciever Node Started.");
@@ -66,7 +66,7 @@ void TcpImageReciever::receive_loop()
         ).toImageMsg();
 
         img_pub_->publish(*msg);
-        std::cout << "Image published, size: " << img.cols << "x" << img.rows << std::endl;
+        RCLCPP_INFO(get_logger(), "Image published, frame: %d, size: %dx%d", ++frame_count_, img.cols, img.rows);
     }
 }
 

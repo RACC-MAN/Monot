@@ -1,5 +1,5 @@
-#ifndef MONOT_ESP__TCP_IMAGE_RECIEVER
-#define MONOT_ESP__TCP_IMAGE_RECIEVER
+#ifndef MONOT_BRINGUP__TCP_IMAGE_RECIEVER
+#define MONOT_BRINGUP__TCP_IMAGE_RECIEVER
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
@@ -24,6 +24,8 @@ class TcpImageReciever : public rclcpp::Node
         int server_fd_, client_fd_;
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr img_pub_;
         rclcpp::TimerBase::SharedPtr timer_;
+
+        int frame_count_ = 0;
 };
 
 #endif
