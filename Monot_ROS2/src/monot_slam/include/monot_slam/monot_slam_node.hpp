@@ -9,14 +9,7 @@
 #include <System.h>
 
 #include "sensor_msgs/msg/image.hpp"
-
-// #define CNF_VOCAVULARY_PATH "/home/keisoku/ORB-SLAM3/ORB_SLAM3/Vocabulary/ORBvoc.txt"
-
-// Path to the settings file for the camera. This should be a YAML file containing the camera intrinsics and distortion coefficients.
-// #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/webcam_320x240_param.yaml"
-// #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/camera_ov3660_param.yaml"
-// #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/udp_scaled_640x480_param.yaml"
-// #define CNF_SETTING_PATH    "/home/keisoku/monot_ws/Monot/camera_calibration/udp_1280x960_param.yaml"
+#include "sensor_msgs/msg/imu.hpp"
 
 class MonotSlamNode : public rclcpp::Node
 {
@@ -26,10 +19,20 @@ class MonotSlamNode : public rclcpp::Node
 
     private:
         void recieve_image(const sensor_msgs::msg::Image::SharedPtr msg);
+        void recieve_imu(const sensor_msgs::msg::Imu::SharedPtr msg);
+        void set_parameters();
 
         rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr img_sub_;
-        std::shared_ptr<ORB_SLAM3::System> slam_;
         cv_bridge::CvImagePtr cv_img_;
+        double last_image_timestamp_ = -1.0;
+
+        rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_sub_;
+        double latest_imu_timestamp_ = -1.0;
+        std::deque<ORB_SLAM3::IMU::Point> imu_buffer_;
+        size_t IMU_BUFFER_SIZE = 400;
+        std::mutex imu_mutex_;
+
+        std::shared_ptr<ORB_SLAM3::System> slam_;
 
         std::string SYSTEM_TYPE = "MONOCULAR";
         std::string CNF_VOCAVULARY_PATH = "/path/to/ORBvoc.txt";

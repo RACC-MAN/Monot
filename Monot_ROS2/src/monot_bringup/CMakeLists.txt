@@ -14,6 +14,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 
@@ -23,6 +24,7 @@ ament_auto_add_library(${PROJECT_NAME} SHARED
   src/tcp_image_reciever.cpp
   src/udp_image_reciever.cpp
   src/udp_imu_reciever.cpp
+  src/udp_velocity_sender.cpp
 ) 
 
 rclcpp_components_register_node(${PROJECT_NAME}
@@ -50,6 +52,11 @@ rclcpp_components_register_node(${PROJECT_NAME}
   EXECUTABLE udp_imu_reciever
 )
 
+rclcpp_components_register_node(${PROJECT_NAME}
+  PLUGIN "UdpVelocitySender"
+  EXECUTABLE udp_velocity_sender
+)
+
 target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBS}
 )
@@ -63,5 +70,12 @@ endif()
 ament_auto_package(
   INSTALL_TO_SHARE
 )
+
+install(DIRECTORY
+  launch
+  param
+  DESTINATION share/${PROJECT_NAME}
+)
+
 
 install(FILES DESTINATION share/${PROJECT_NAME})

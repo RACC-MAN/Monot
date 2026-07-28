@@ -13,6 +13,7 @@
 
 struct ImuPacket
 {
+    uint64_t timestamp_us;
     float ax, ay, az; // Accelerometer
     float gx, gy, gz; // Gyroscope
 };

@@ -37,21 +37,24 @@ void UdpImageReciever::receive_loop()
 
     while(rclcpp::ok()) {
         int len = recvfrom(sock_, buffer, BUFFER_SIZE, 0, (sockaddr*)&sender_addr, &sender_len);
-        if (len < 6) continue; // Not enough data for header
+        if (len < (int)sizeof(ImageHeader)) continue; // Not enough data for header
 
-        uint16_t frame_id = ntohs(*(uint16_t*)(buffer));
-        uint16_t packet_id = ntohs(*(uint16_t*)(buffer + 2));
-        uint16_t total_packets = ntohs(*(uint16_t*)(buffer + 4));
+        auto* hdr = reinterpret_cast<ImageHeader*>(buffer);
+
+        uint16_t frame_id = ntohs(hdr->frame_id);
+        uint16_t packet_id = ntohs(hdr->packet_id);
+        uint16_t total_packets = ntohs(hdr->total_packets);
+        uint64_t timestamp_us = hdr->timestamp_us;
 
         auto &frame = frames_[frame_id];
 
         if (frame.packets.empty()) {
             frame.total_packets = total_packets;
+            frame.timestamp_us = timestamp_us;
             frame.packets.resize(total_packets);
         }
 
-        frame.packets[packet_id] = std::vector<uint8_t>(buffer + 6, buffer + len);
-
+        frame.packets[packet_id] = std::vector<uint8_t>(buffer + sizeof(ImageHeader), buffer + len);
         bool complete = true;
         for (const auto &pkt : frame.packets) {
             if (pkt.empty()) {
@@ -62,7 +65,7 @@ void UdpImageReciever::receive_loop()
         }
 
         if(complete) {
-            RCLCPP_INFO(get_logger(), "Received complete frame %u with %u packets, assembling image...", frame_id, total_packets);
+            // RCLCPP_INFO(get_logger(), "Received complete frame %u with %u packets, assembling image...", frame_id, total_packets);
             std::vector<uint8_t> img_data;
             for (const auto &pkt : frame.packets) {
                 img_data.insert(img_data.end(), pkt.begin(), pkt.end());
@@ -71,10 +74,14 @@ void UdpImageReciever::receive_loop()
             cv::Mat img = cv::imdecode(img_data, cv::IMREAD_COLOR);
             if (!img.empty()) 
             {
-                if(flip_image) cv::flip(img, img, 1);
+                
+                if(flip_ud) cv::flip(img, img, 0);
+                if(flip_lr) cv::flip(img, img, 1);
                 if(SCALE_SIZE != 1) cv::resize(img, img, cv::Size(), SCALE_SIZE, SCALE_SIZE, cv::INTER_LINEAR);
 
                 auto msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", img).toImageMsg();
+                msg->header.stamp.sec = frame.timestamp_us / 1000000ULL;
+                msg->header.stamp.nanosec = (frame.timestamp_us % 1000000ULL) * 1000ULL;
                 img_pub_->publish(*msg);
                 RCLCPP_INFO(get_logger(), "Published complete image for frame %u, image size: %u x %u", frame_id, img.rows, img.cols);
             } 

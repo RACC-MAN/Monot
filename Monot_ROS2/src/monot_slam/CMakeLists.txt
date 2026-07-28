@@ -86,4 +86,10 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION bin
 )
 
+install(DIRECTORY
+  launch
+  param
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()

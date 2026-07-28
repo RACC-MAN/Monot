@@ -42,7 +42,8 @@ void UdpImuReciever::receive_loop()
         ImuPacket *pkt = (ImuPacket*)buffer;
 
         auto imu_msg = std::make_shared<sensor_msgs::msg::Imu>();
-        imu_msg->header.stamp = this->now();
+        imu_msg->header.stamp.sec = pkt->timestamp_us / 1000000ULL;
+        imu_msg->header.stamp.nanosec = (pkt->timestamp_us % 1000000ULL) * 1000ULL;
         imu_msg->linear_acceleration.x = pkt->ax;
         imu_msg->linear_acceleration.y = pkt->ay;
         imu_msg->linear_acceleration.z = pkt->az;
@@ -51,7 +52,6 @@ void UdpImuReciever::receive_loop()
         imu_msg->angular_velocity.z = pkt->gz;
 
         imu_pub_->publish(*imu_msg);
-        RCLCPP_INFO(get_logger(), "Published IMU data");
     }
 }
 

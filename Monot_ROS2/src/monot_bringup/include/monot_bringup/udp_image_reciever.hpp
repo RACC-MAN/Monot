@@ -15,11 +15,21 @@
 #define BUFFER_SIZE 1500
 
 const int SCALE_SIZE = 2;
-const bool flip_image = false;
+const bool flip_ud = true;
+const bool flip_lr = false;
+
+struct ImageHeader
+{
+    uint16_t frame_id;
+    uint16_t packet_id;
+    uint16_t total_packets;
+    uint64_t timestamp_us;
+};
 
 struct FrameBuffer {
+    uint16_t total_packets;
+    uint64_t timestamp_us = 0;
     std::vector<std::vector<uint8_t>> packets;
-    int total_packets;
 };
 
 class UdpImageReciever : public rclcpp::Node
